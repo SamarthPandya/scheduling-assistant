@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Tabs from "./Components/TabComponent/Tabs";
 
 function App() {
-  return <div className="App">This is the home page</div>;
+  return (
+    <div className="App">
+      <Tabs />
+    </div>
+  );
 }
 
 export default App;

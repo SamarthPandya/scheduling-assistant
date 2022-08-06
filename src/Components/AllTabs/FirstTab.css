@@ -1,0 +1,25 @@
+:root {
+  --bg-light: #fcf8e8;
+  --bg-light-secondary: #94b49f;
+  --highlight: #df7861;
+  --font-dark: rgb(21, 21, 21);
+  --font-secondary: #76549a;
+}
+.input {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 50px;
+  padding: 20px;
+  text-align: center;
+}
+button,
+input,
+select {
+  padding: 10px;
+  border-radius: 2px;
+  border: none;
+  background-color: var(--bg-light-secondary);
+  color: var(--font-dark);
+}
