@@ -16,33 +16,50 @@ var slotMap = {
   11: "E1",
   12: "F1",
   13: "G1",
+  14: "AL1",
+  15: "AL2",
+  16: "AL3",
+  17: "AL4",
+  18: "AL5",
+  19: "ML1",
+  20: "ML2",
+  21: "ML3",
+  22: "ML4",
+  23: "ML5",
 };
 var slots = {};
-for (var i = 0; i < 14; i++) {
+for (var i = 0; i < 24; i++) {
   slots[slotMap[i]] = "";
 }
-var slotsBinary = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var t_o = {};
+var passToDB = 0;
 var selectedSlotIndex = 0;
-
 const FirstTab = () => {
+  var targetProxy = new Proxy(t_o, {
+    set: function (target, key, value) {
+      console.log(`${key} set to ${value}`);
+      target[key] = value;
+      return true;
+    },
+  });
+  targetProxy.passToDB = passToDB;
   function addSlot() {
     var selectedSlotName = document.getElementById("Alias").value;
     slots[slotMap[selectedSlotIndex]] = selectedSlotName;
     var selectedSlot = document.getElementById(slotMap[selectedSlotIndex]);
     selectedSlot.setAttribute("disabled", "1");
     console.log(slots);
-    console.log(slotsBinary);
+    console.log(passToDB);
   }
   const clearAll = () => {
     var temp = document.getElementsByTagName("option");
-    for (var i = 0; i < 14; i++) {
-      slotsBinary[i] = 0;
+    for (var i = 0; i < 24; i++) {
       if (temp[i] != undefined && temp[i].disabled) {
         temp[i].removeAttribute("disabled");
       }
       slots[slotMap[i]] = "";
     }
-    console.log(slotsBinary);
+    console.log(slots);
   };
   return (
     <div className="FirstTab">
@@ -53,8 +70,9 @@ const FirstTab = () => {
         <select
           id="menu"
           onChange={(event) => {
-            slotsBinary[event.target.options.selectedIndex] = 1;
+            passToDB = event.target.options.selectedIndex;
             selectedSlotIndex = event.target.options.selectedIndex;
+            targetProxy.passToDB = passToDB;
           }}
         >
           <option id="A" className="slotOption" value="A">
@@ -98,6 +116,36 @@ const FirstTab = () => {
           </option>
           <option id="G1" className="slotOption" value="G1">
             G1
+          </option>
+          <option id="AL1" className="slotOption" value="AL1">
+            AL1
+          </option>
+          <option id="AL2" className="slotOption" value="AL2">
+            AL2
+          </option>
+          <option id="AL3" className="slotOption" value="AL3">
+            AL3
+          </option>
+          <option id="AL4" className="slotOption" value="AL4">
+            AL4
+          </option>
+          <option id="AL5" className="slotOption" value="AL5">
+            AL5
+          </option>
+          <option id="ML1" className="slotOption" value="ML1">
+            ML1
+          </option>
+          <option id="ML2" className="slotOption" value="ML2">
+            ML2
+          </option>
+          <option id="ML3" className="slotOption" value="ML3">
+            ML3
+          </option>
+          <option id="ML4" className="slotOption" value="ML4">
+            ML4
+          </option>
+          <option id="ML5" className="slotOption" value="ML5">
+            ML5
           </option>
         </select>
         <br></br>
