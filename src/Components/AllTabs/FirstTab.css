@@ -20,6 +20,28 @@ select {
   padding: 10px;
   border-radius: 2px;
   border: none;
-  background-color: var(--bg-light-secondary);
   color: var(--font-dark);
+}
+input,
+select {
+  background-color: var(--bg-light-secondary);
+}
+
+#setSlot {
+  background-color: rgb(39, 192, 39);
+  color: white;
+}
+
+#clearAll {
+  background-color: red;
+  color: white;
+}
+#clearAll:hover {
+  background-color: rgb(184, 63, 63);
+  color: white;
+}
+
+#setSlot:hover {
+  background-color: green;
+  color: white;
 }

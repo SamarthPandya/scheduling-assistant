@@ -35,7 +35,6 @@ const FirstTab = () => {
   }
   const clearAll = () => {
     var temp = document.getElementsByTagName("option");
-    console.log(temp);
     for (var i = 0; i < 14; i++) {
       slotsBinary[i] = 0;
       if (temp[i] != undefined && temp[i].disabled) {
