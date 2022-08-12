@@ -50,6 +50,12 @@ const FirstTab = () => {
     selectedSlot.setAttribute("disabled", "1");
     console.log(slots);
     console.log(passToDB);
+    localStorage.setItem(slotMap[selectedSlotIndex], selectedSlotName);
+    localStorage.setItem("someNumber", 23);
+    localStorage.setItem("someNumber2", 232);
+    console.log(
+      localStorage.getItem("someNumber") + localStorage.getItem("someNumber2")
+    );
   }
   const clearAll = () => {
     var temp = document.getElementsByTagName("option");
@@ -57,6 +63,7 @@ const FirstTab = () => {
       if (temp[i] != undefined && temp[i].disabled) {
         temp[i].removeAttribute("disabled");
       }
+      localStorage.removeItem(slotMap[i]);
       slots[slotMap[i]] = "";
     }
     console.log(slots);
