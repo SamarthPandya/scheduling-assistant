@@ -51,8 +51,20 @@ function Login() {
       <form onSubmit={handleSubmit}>
         {renderErrorMessage("uname")}
         {renderErrorMessage("pass")}
-        <input type="text" name="uname" required placeholder="username" />
-        <input type="password" name="pass" required placeholder="password" />
+        <input
+          className="input"
+          type="text"
+          name="uname"
+          required
+          placeholder="username"
+        />
+        <input
+          className="input"
+          type="password"
+          name="pass"
+          required
+          placeholder="password"
+        />
         <input type="submit" value="Login" className="logIn" />
       </form>
     </div>
