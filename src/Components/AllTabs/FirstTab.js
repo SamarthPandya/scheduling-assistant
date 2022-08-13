@@ -71,7 +71,13 @@ const FirstTab = () => {
   return (
     <div className="FirstTab">
       <div className="input">
-        <input id="Alias" type="text" placeholder="Slot Name" required></input>
+        <input
+          id="Alias"
+          autoComplete="off"
+          type="text"
+          placeholder="Slot Name"
+          required
+        ></input>
         <br></br>
         <br></br>
         <select

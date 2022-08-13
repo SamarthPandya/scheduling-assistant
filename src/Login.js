@@ -47,19 +47,20 @@ function Login() {
     }
   };
   const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
+    <div className="formBox">
+      <form id="InnerFormBox" onSubmit={handleSubmit}>
         {renderErrorMessage("uname")}
         {renderErrorMessage("pass")}
         <input
-          className="input"
+          className="inputBox"
           type="text"
           name="uname"
+          autoComplete="off"
           required
           placeholder="username"
         />
         <input
-          className="input"
+          className="inputBox"
           type="password"
           name="pass"
           required

@@ -1,9 +1,23 @@
-.form {
+input:focus {
+  outline: none;
+}
+:root {
+  --dark-primary: #222831;
+  --dark-secondary: #393e46;
+  --light-primary: #eeeeee;
+  --light-secondary: #00adb5;
+  --font-dark: rgb(26, 25, 25);
+}
+.formBox {
   align-items: center;
   justify-content: center;
   display: flex;
 }
-form {
+body {
+  background-image: url("./loginBack.jpg");
+  background-size: 1300px;
+}
+#InnerFormBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,58 +25,31 @@ form {
   row-gap: 20px;
   position: absolute;
   top: 100px;
-  background-color: #df7861;
+  background-color: rgba(106, 105, 105, 0.114);
   padding: 50px;
-  border-radius: 30px;
   height: 400px;
 }
 
-.input {
-  font-size: 20pt;
-  color: rgb(41, 41, 41);
+.inputBox {
+  font-size: 15pt;
+  color: var(--font-dark);
+  background-color: var(--light-primary);
+  opacity: 30%;
 }
 .logIn {
   border-radius: 10px;
-  background-color: rgb(125, 171, 52);
+  background-color: var(--dark-primary);
+
   margin-top: 30px;
   color: rgb(255, 255, 255);
-  font-size: 20pt;
+
+  font-size: 15pt;
 }
 .logIn:hover {
-  background-color: rgb(7, 88, 251);
+  background-color: blue;
+  transform: scale(1.1);
 }
 
 .error {
-  background-color: inherit;
   color: white;
-}
-#setSlot {
-  background-color: rgb(39, 192, 39);
-  color: white;
-}
-
-#clearAll {
-  background-color: red;
-  color: white;
-}
-#clearAll:hover {
-  background-color: rgb(184, 63, 63);
-  color: white;
-}
-
-#setSlot:hover {
-  background-color: green;
-  color: white;
-}
-button,
-input,
-select {
-  padding: 10px;
-  border-radius: 2px;
-  border: none;
-  color: var(--font-dark);
-}
-input,
-select {
-  background-color: var(--bg-light-secondary);
 }

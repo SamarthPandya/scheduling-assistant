@@ -1,9 +1,9 @@
 :root {
-  --bg-light: #fcf8e8;
-  --bg-light-secondary: #94b49f;
-  --highlight: #df7861;
-  --font-dark: rgb(21, 21, 21);
-  --font-secondary: #76549a;
+  --dark-primary: #222831;
+  --dar-secondary: #393e46;
+  --light-primary: #eeeeee;
+  --light-secondary: #00adb5;
+  --font-dark: rgb(26, 25, 25);
 }
 .input {
   align-items: center;
