@@ -5,6 +5,11 @@
   --light-secondary: #00adb5;
   --font-dark: rgb(26, 25, 25);
 }
+.firstTab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .input {
   align-items: center;
   justify-content: center;
@@ -13,6 +18,12 @@
   column-gap: 50px;
   padding: 20px;
   text-align: center;
+}
+tr {
+  background-color: var(--light-secondary);
+}
+td {
+  width: 100px;
 }
 button,
 input,

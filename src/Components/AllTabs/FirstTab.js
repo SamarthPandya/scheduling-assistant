@@ -50,12 +50,31 @@ const FirstTab = () => {
     selectedSlot.setAttribute("disabled", "1");
     console.log(slots);
     console.log(passToDB);
+    fetch("https://iitgtt2022.000webhostapp.com/fetch.php?sl=" + passToDB, {
+      credentials: "include",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      method: "GET",
+    })
+      .then(function (response) {
+        var x = response.json().then((data) => {
+          var res = data;
+          console.log(res);
+          for (const it in res) {
+            const curr = res[it];
+            for (const slott in curr) {
+              const temp = (it + slott).toLocaleLowerCase();
+              console.log(temp);
+              document.getElementById(temp).innerHTML = slots[res[it][slott]];
+            }
+          }
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     localStorage.setItem(slotMap[selectedSlotIndex], selectedSlotName);
-    localStorage.setItem("someNumber", 23);
-    localStorage.setItem("someNumber2", 232);
-    console.log(
-      localStorage.getItem("someNumber") + localStorage.getItem("someNumber2")
-    );
   }
   const clearAll = () => {
     var temp = document.getElementsByTagName("option");
@@ -181,6 +200,82 @@ const FirstTab = () => {
         >
           Clear All
         </button>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <th>Day</th>
+            <th>7:55-8:50</th>
+            <th>9:00-9:55</th>
+            <th>10:00-10:55</th>
+            <th>11:00-11:55</th>
+            <th>12:00-12:55</th>
+            <th>2:00-2:55</th>
+            <th>3:00-3:55</th>
+            <th>4:00-4:55</th>
+            <th>5:00-5:55</th>
+          </tr>
+          <tr>
+            <td id="mon">Monday</td>
+            <td id="monslot1"></td>
+            <td id="monslot2"></td>
+            <td id="monslot3"></td>
+            <td id="monslot4"></td>
+            <td id="monslot5"></td>
+            <td id="monslot6"></td>
+            <td id="monslot7"></td>
+            <td id="monslot8"></td>
+            <td id="monslot9"></td>
+          </tr>
+          <tr>
+            <td id="tue">Tuesday</td>
+            <td id="tueslot1"></td>
+            <td id="tueslot2"></td>
+            <td id="tueslot3"></td>
+            <td id="tueslot4"></td>
+            <td id="tueslot5"></td>
+            <td id="tueslot6"></td>
+            <td id="tueslot7"></td>
+            <td id="tueslot8"></td>
+            <td id="tueslot9"></td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td id="wedslot1"></td>
+            <td id="wedslot2"></td>
+            <td id="wedslot3"></td>
+            <td id="wedslot4"></td>
+            <td id="wedslot5"></td>
+            <td id="wedslot6"></td>
+            <td id="wedslot7"></td>
+            <td id="wedslot8"></td>
+            <td id="wedslot9"></td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td id="thuslot1"></td>
+            <td id="thuslot2"></td>
+            <td id="thuslot3"></td>
+            <td id="thuslot4"></td>
+            <td id="thuslot5"></td>
+            <td id="thuslot6"></td>
+            <td id="thuslot7"></td>
+            <td id="thuslot8"></td>
+            <td id="thuslot9"></td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td id="frislot1"></td>
+            <td id="frislot2"></td>
+            <td id="frislot3"></td>
+            <td id="frislot4"></td>
+            <td id="frislot5"></td>
+            <td id="frislot6"></td>
+            <td id="frislot7"></td>
+            <td id="frislot8"></td>
+            <td id="frislot9"></td>
+          </tr>
+        </table>
       </div>
     </div>
   );
