@@ -44,6 +44,7 @@ const FirstTab = () => {
     },
   });
   targetProxy.passToDB = passToDB;
+<<<<<<< HEAD
   function loadTT() {
     fetch(
       "https://iitgtt2022.000webhostapp.com/gettt.php?id=" +
@@ -56,6 +57,16 @@ const FirstTab = () => {
         method: "GET",
       }
     )
+=======
+function loadTT(){
+  fetch("https://iitgtt2022.000webhostapp.com/gettt.php?id="+sessionStorage.getItem("id"), {
+      credentials: "include",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      method: "GET",
+    })
+>>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
       .then(function (response) {
         var x = response.json().then((data) => {
           var res = data;
@@ -73,8 +84,13 @@ const FirstTab = () => {
       .catch(function (error) {
         console.log(error);
       });
+<<<<<<< HEAD
   }
   loadTT();
+=======
+}
+
+>>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
   function addSlot() {
     var selectedSlotName = document.getElementById("Alias").value;
     slots[slotMap[selectedSlotIndex]] = selectedSlotName;
@@ -83,6 +99,7 @@ const FirstTab = () => {
     console.log(slots);
     console.log(passToDB);
     // this will add data to database
+<<<<<<< HEAD
     var ps =
       "id=" +
       sessionStorage.getItem("id") +
@@ -91,6 +108,10 @@ const FirstTab = () => {
       "&cr=" +
       selectedSlotName;
     fetch("https://iitgtt2022.000webhostapp.com/fetch.php?" + ps, {
+=======
+    var ps="id="+sessionStorage.getItem("id")+"&sl="+passToDB+"&cr="+selectedSlotName;
+    fetch("https://iitgtt2022.000webhostapp.com/fetch.php?"+ps, {
+>>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
       credentials: "include",
       headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -110,6 +131,7 @@ const FirstTab = () => {
   const clearAll = () => {
     var temp = document.getElementsByTagName("option");
     // clear from database
+<<<<<<< HEAD
     fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
       credentials: "include",
       headers: {
@@ -118,6 +140,16 @@ const FirstTab = () => {
       method: "POST",
       body: "id=" + sessionStorage.getItem("id"),
     }).then(console.log("CLEARED FROM DATABASE"));
+=======
+    fetch("https://iitgtt2022.000webhostapp.com/clear.php", {  
+    
+      credentials: "include",
+      headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+      method: "POST",
+      body: "id="+sessionStorage.getItem("id")}).then(console.log("CLEARED FROM DATABASE"));
+>>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
     for (var i = 0; i < 24; i++) {
       if (temp[i] != undefined && temp[i].disabled) {
         temp[i].removeAttribute("disabled");

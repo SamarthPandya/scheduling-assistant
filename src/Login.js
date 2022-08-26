@@ -27,8 +27,8 @@ function Login() {
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
-
     var { uname, pass } = document.forms[0];
+<<<<<<< HEAD
     fetch("https://iitgtt2022.000webhostapp.com/signin.php", {
       credentials: "include",
       headers: {
@@ -71,6 +71,53 @@ function Login() {
     //   setErrorMessages({ name: "uname", message: errors.uname });
     // }
   };
+=======
+    fetch("https://iitgtt2022.000webhostapp.com/signin.php", {  
+    
+      credentials: "include",
+      headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+      method: "POST",
+      body: "id="+uname.value+"&pwd="+pass.value})
+      .then(function(response) { console.log(response); 
+        if (response.status==305) {
+          
+            setErrorMessages({ name: "pass", message: errors.pass });
+          } else if(response.status == 200) {
+            sessionStorage.setItem("id",uname.value);
+            setIsSubmitted(true);
+          }
+         else if(response.status == 303) {
+          // Username not found
+          setErrorMessages({ name: "uname", message: errors.uname });
+        }
+        else{
+          console.log("Fatal Error:"+ response.status+" =>"+response.text);
+        }
+      })
+      .catch(function(error) {
+      console.log(error);
+      });
+
+
+  //   // Find user login info
+  //   const userData = database.find((user) => user.username === uname.value);
+
+  //   // Compare user info
+  //   if (userData) {
+  //     if (userData.password !== pass.value) {
+  //       // Invalid password
+  //       setErrorMessages({ name: "pass", message: errors.pass });
+  //     } else {
+  //       setIsSubmitted(true);
+  //     }
+  //   } else {
+  //     // Username not found
+  //     setErrorMessages({ name: "uname", message: errors.uname });
+  //   }
+   };
+>>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
   const renderForm = (
     <div className="formBox">
       <form id="InnerFormBox" onSubmit={handleSubmit}>
