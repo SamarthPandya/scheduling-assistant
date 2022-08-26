@@ -1,14 +1,30 @@
 :root {
-  --dark-primary: #222831;
-  --dar-secondary: #393e46;
-  --light-primary: #eeeeee;
-  --light-secondary: #00adb5;
-  --font-dark: rgb(26, 25, 25);
+  --bg-light: #fcf8e8;
+  --bg-light-secondary: #94b49f;
+  --highlight: #df7861;
+  --font-dark: rgb(21, 21, 21);
+  --font-secondary: #76549a;
+  --font-dark1: rgb(63, 60, 60);
 }
-.firstTab {
+.TabContent {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.tableBox {
+  margin-top: 30px;
+}
+td {
+  text-align: center;
+  width: 9vw;
+  padding: 1px;
+  overflow: hidden;
+  height: 10vh;
+}
+th {
+  text-align: center;
+  height: 10vh;
+  color: var(--font-dark1);
 }
 .input {
   align-items: center;
@@ -20,10 +36,7 @@
   text-align: center;
 }
 tr {
-  background-color: var(--light-secondary);
-}
-td {
-  width: 100px;
+  background-color: #94b49fb2;
 }
 button,
 input,
@@ -55,4 +68,9 @@ select {
 #setSlot:hover {
   background-color: green;
   color: white;
+}
+
+#dayOfWeek {
+  font-weight: bold;
+  color: var(--font-dark1);
 }

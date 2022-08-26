@@ -1,3 +1,4 @@
+import { tab } from "@testing-library/user-event/dist/tab";
 import React from "react";
 import "./FirstTab.css";
 
@@ -43,20 +44,18 @@ const FirstTab = () => {
     },
   });
   targetProxy.passToDB = passToDB;
-  function addSlot() {
-    var selectedSlotName = document.getElementById("Alias").value;
-    slots[slotMap[selectedSlotIndex]] = selectedSlotName;
-    var selectedSlot = document.getElementById(slotMap[selectedSlotIndex]);
-    selectedSlot.setAttribute("disabled", "1");
-    console.log(slots);
-    console.log(passToDB);
-    fetch("https://iitgtt2022.000webhostapp.com/fetch.php?sl=" + passToDB, {
-      credentials: "include",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      method: "GET",
-    })
+  function loadTT() {
+    fetch(
+      "https://iitgtt2022.000webhostapp.com/gettt.php?id=" +
+        sessionStorage.getItem("id"),
+      {
+        credentials: "include",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+        method: "GET",
+      }
+    )
       .then(function (response) {
         var x = response.json().then((data) => {
           var res = data;
@@ -66,10 +65,42 @@ const FirstTab = () => {
             for (const slott in curr) {
               const temp = (it + slott).toLocaleLowerCase();
               console.log(temp);
-              document.getElementById(temp).innerHTML = slots[res[it][slott]];
+              document.getElementById(temp).innerHTML = res[it][slott];
             }
           }
         });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  loadTT();
+  function addSlot() {
+    var selectedSlotName = document.getElementById("Alias").value;
+    slots[slotMap[selectedSlotIndex]] = selectedSlotName;
+    var selectedSlot = document.getElementById(slotMap[selectedSlotIndex]);
+    selectedSlot.setAttribute("disabled", "1");
+    console.log(slots);
+    console.log(passToDB);
+    // this will add data to database
+    var ps =
+      "id=" +
+      sessionStorage.getItem("id") +
+      "&sl=" +
+      passToDB +
+      "&cr=" +
+      selectedSlotName;
+    fetch("https://iitgtt2022.000webhostapp.com/fetch.php?" + ps, {
+      credentials: "include",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      method: "GET",
+    })
+      .then(function (response) {
+        console.log("ADDED to DB");
+        // this will display on table
+        loadTT();
       })
       .catch(function (error) {
         console.log(error);
@@ -78,12 +109,25 @@ const FirstTab = () => {
   }
   const clearAll = () => {
     var temp = document.getElementsByTagName("option");
+    // clear from database
+    fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
+      credentials: "include",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      method: "POST",
+      body: "id=" + sessionStorage.getItem("id"),
+    }).then(console.log("CLEARED FROM DATABASE"));
     for (var i = 0; i < 24; i++) {
       if (temp[i] != undefined && temp[i].disabled) {
         temp[i].removeAttribute("disabled");
       }
       localStorage.removeItem(slotMap[i]);
       slots[slotMap[i]] = "";
+    }
+    var tableCells = document.getElementsByClassName("lecture");
+    for (var m = 0; m < 45; m++) {
+      tableCells[m].innerHTML = "";
     }
     console.log(slots);
   };
@@ -92,6 +136,7 @@ const FirstTab = () => {
       <div className="input">
         <input
           id="Alias"
+          maxLength="25"
           autoComplete="off"
           type="text"
           placeholder="Slot Name"
@@ -201,10 +246,10 @@ const FirstTab = () => {
           Clear All
         </button>
       </div>
-      <div>
+      <div className="tableBox">
         <table>
           <tr>
-            <th>Day</th>
+            <th>Day Vs. Time</th>
             <th>7:55-8:50</th>
             <th>9:00-9:55</th>
             <th>10:00-10:55</th>
@@ -216,64 +261,64 @@ const FirstTab = () => {
             <th>5:00-5:55</th>
           </tr>
           <tr>
-            <td id="mon">Monday</td>
-            <td id="monslot1"></td>
-            <td id="monslot2"></td>
-            <td id="monslot3"></td>
-            <td id="monslot4"></td>
-            <td id="monslot5"></td>
-            <td id="monslot6"></td>
-            <td id="monslot7"></td>
-            <td id="monslot8"></td>
-            <td id="monslot9"></td>
+            <td id="dayOfWeek">Monday</td>
+            <td id="monslot1" className="lecture"></td>
+            <td id="monslot2" className="lecture"></td>
+            <td id="monslot3" className="lecture"></td>
+            <td id="monslot4" className="lecture"></td>
+            <td id="monslot5" className="lecture"></td>
+            <td id="monslot6" className="lecture"></td>
+            <td id="monslot7" className="lecture"></td>
+            <td id="monslot8" className="lecture"></td>
+            <td id="monslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td id="tue">Tuesday</td>
-            <td id="tueslot1"></td>
-            <td id="tueslot2"></td>
-            <td id="tueslot3"></td>
-            <td id="tueslot4"></td>
-            <td id="tueslot5"></td>
-            <td id="tueslot6"></td>
-            <td id="tueslot7"></td>
-            <td id="tueslot8"></td>
-            <td id="tueslot9"></td>
+            <td id="dayOfWeek">Tuesday</td>
+            <td id="tueslot1" className="lecture"></td>
+            <td id="tueslot2" className="lecture"></td>
+            <td id="tueslot3" className="lecture"></td>
+            <td id="tueslot4" className="lecture"></td>
+            <td id="tueslot5" className="lecture"></td>
+            <td id="tueslot6" className="lecture"></td>
+            <td id="tueslot7" className="lecture"></td>
+            <td id="tueslot8" className="lecture"></td>
+            <td id="tueslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td>Wednesday</td>
-            <td id="wedslot1"></td>
-            <td id="wedslot2"></td>
-            <td id="wedslot3"></td>
-            <td id="wedslot4"></td>
-            <td id="wedslot5"></td>
-            <td id="wedslot6"></td>
-            <td id="wedslot7"></td>
-            <td id="wedslot8"></td>
-            <td id="wedslot9"></td>
+            <td id="dayOfWeek">Wednesday</td>
+            <td id="wedslot1" className="lecture"></td>
+            <td id="wedslot2" className="lecture"></td>
+            <td id="wedslot3" className="lecture"></td>
+            <td id="wedslot4" className="lecture"></td>
+            <td id="wedslot5" className="lecture"></td>
+            <td id="wedslot6" className="lecture"></td>
+            <td id="wedslot7" className="lecture"></td>
+            <td id="wedslot8" className="lecture"></td>
+            <td id="wedslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td>Thursday</td>
-            <td id="thuslot1"></td>
-            <td id="thuslot2"></td>
-            <td id="thuslot3"></td>
-            <td id="thuslot4"></td>
-            <td id="thuslot5"></td>
-            <td id="thuslot6"></td>
-            <td id="thuslot7"></td>
-            <td id="thuslot8"></td>
-            <td id="thuslot9"></td>
+            <td id="dayOfWeek">Thursday</td>
+            <td id="thuslot1" className="lecture"></td>
+            <td id="thuslot2" className="lecture"></td>
+            <td id="thuslot3" className="lecture"></td>
+            <td id="thuslot4" className="lecture"></td>
+            <td id="thuslot5" className="lecture"></td>
+            <td id="thuslot6" className="lecture"></td>
+            <td id="thuslot7" className="lecture"></td>
+            <td id="thuslot8" className="lecture"></td>
+            <td id="thuslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td>Friday</td>
-            <td id="frislot1"></td>
-            <td id="frislot2"></td>
-            <td id="frislot3"></td>
-            <td id="frislot4"></td>
-            <td id="frislot5"></td>
-            <td id="frislot6"></td>
-            <td id="frislot7"></td>
-            <td id="frislot8"></td>
-            <td id="frislot9"></td>
+            <td id="dayOfWeek">Friday</td>
+            <td id="frislot1" className="lecture"></td>
+            <td id="frislot2" className="lecture"></td>
+            <td id="frislot3" className="lecture"></td>
+            <td id="frislot4" className="lecture"></td>
+            <td id="frislot5" className="lecture"></td>
+            <td id="frislot6" className="lecture"></td>
+            <td id="frislot7" className="lecture"></td>
+            <td id="frislot8" className="lecture"></td>
+            <td id="frislot9" className="lecture"></td>
           </tr>
         </table>
       </div>
