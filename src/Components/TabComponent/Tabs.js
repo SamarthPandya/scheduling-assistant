@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FirstTab from "../AllTabs/FirstTab.js";
 import SecondTab from "../AllTabs/SecondTab.js";
+import ThirdTab from "../AllTabs/ThirdTab.js";
 import TabNavItem from "../V2/TabNavItem";
 import TabContent from "../V2/TabContent";
 import "./Tabs.css";
@@ -38,7 +39,7 @@ const Tabs = (e) => {
           <SecondTab />
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
-          <SecondTab />
+          <ThirdTab />
         </TabContent>
       </div>
     </div>

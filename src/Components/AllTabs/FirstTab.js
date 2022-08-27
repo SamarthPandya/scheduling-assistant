@@ -1,6 +1,8 @@
 import { tab } from "@testing-library/user-event/dist/tab";
-import React from "react";
+import React, { useState } from "react";
 import "./FirstTab.css";
+
+//window.timeTable = null;
 
 var slotMap = {
   0: "A",
@@ -44,7 +46,6 @@ const FirstTab = () => {
     },
   });
   targetProxy.passToDB = passToDB;
-<<<<<<< HEAD
   function loadTT() {
     fetch(
       "https://iitgtt2022.000webhostapp.com/gettt.php?id=" +
@@ -57,26 +58,20 @@ const FirstTab = () => {
         method: "GET",
       }
     )
-=======
-function loadTT(){
-  fetch("https://iitgtt2022.000webhostapp.com/gettt.php?id="+sessionStorage.getItem("id"), {
-      credentials: "include",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      method: "GET",
-    })
->>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
       .then(function (response) {
         var x = response.json().then((data) => {
           var res = data;
+          window.timeTable = res;
+
           console.log(res);
           for (const it in res) {
             const curr = res[it];
             for (const slott in curr) {
               const temp = (it + slott).toLocaleLowerCase();
               console.log(temp);
-              document.getElementById(temp).innerHTML = res[it][slott];
+              if (temp) {
+                document.getElementById(temp).innerHTML = res[it][slott];
+              }
             }
           }
         });
@@ -84,22 +79,28 @@ function loadTT(){
       .catch(function (error) {
         console.log(error);
       });
-<<<<<<< HEAD
   }
   loadTT();
-=======
-}
-
->>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
   function addSlot() {
-    var selectedSlotName = document.getElementById("Alias").value;
+    const n = document.getElementById("Alias").value;
+    if (n == "") {
+      n = slotMap[selectedSlotIndex];
+    }
+    var selectedSlotName = n;
     slots[slotMap[selectedSlotIndex]] = selectedSlotName;
     var selectedSlot = document.getElementById(slotMap[selectedSlotIndex]);
     selectedSlot.setAttribute("disabled", "1");
     console.log(slots);
     console.log(passToDB);
     // this will add data to database
-<<<<<<< HEAD
+    var ps =
+      "id=" +
+      sessionStorage.getItem("id") +
+      "&sl=" +
+      passToDB +
+      "&cr=" +
+      selectedSlotName;
+
     var ps =
       "id=" +
       sessionStorage.getItem("id") +
@@ -108,10 +109,6 @@ function loadTT(){
       "&cr=" +
       selectedSlotName;
     fetch("https://iitgtt2022.000webhostapp.com/fetch.php?" + ps, {
-=======
-    var ps="id="+sessionStorage.getItem("id")+"&sl="+passToDB+"&cr="+selectedSlotName;
-    fetch("https://iitgtt2022.000webhostapp.com/fetch.php?"+ps, {
->>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
       credentials: "include",
       headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -129,9 +126,9 @@ function loadTT(){
     localStorage.setItem(slotMap[selectedSlotIndex], selectedSlotName);
   }
   const clearAll = () => {
+    window.timeTable = null;
     var temp = document.getElementsByTagName("option");
     // clear from database
-<<<<<<< HEAD
     fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
       credentials: "include",
       headers: {
@@ -140,16 +137,16 @@ function loadTT(){
       method: "POST",
       body: "id=" + sessionStorage.getItem("id"),
     }).then(console.log("CLEARED FROM DATABASE"));
-=======
-    fetch("https://iitgtt2022.000webhostapp.com/clear.php", {  
-    
+
+    fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
       credentials: "include",
       headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-        },
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
       method: "POST",
-      body: "id="+sessionStorage.getItem("id")}).then(console.log("CLEARED FROM DATABASE"));
->>>>>>> 38d322bd4059bcc05af903d5bf0a2ec83b5b9d50
+      body: "id=" + sessionStorage.getItem("id"),
+    }).then(console.log("CLEARED FROM DATABASE"));
+
     for (var i = 0; i < 24; i++) {
       if (temp[i] != undefined && temp[i].disabled) {
         temp[i].removeAttribute("disabled");
@@ -161,7 +158,6 @@ function loadTT(){
     for (var m = 0; m < 45; m++) {
       tableCells[m].innerHTML = "";
     }
-    console.log(slots);
   };
   return (
     <div className="FirstTab">

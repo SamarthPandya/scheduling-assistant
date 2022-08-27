@@ -1,0 +1,30 @@
+.thirdTab {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todayContainer {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(4, 20rem);
+}
+.slotToday {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: center;
+  background-color: blue;
+  justify-content: centre;
+  padding: 10px;
+  width: 150px;
+  overflow: hidden;
+  border-radius: 7px;
+}
+.slotToday:hover {
+  opacity: 80%;
+  color: white;
+}

@@ -9,15 +9,16 @@
 .TabContent {
   display: flex;
   align-items: center;
+  overflow: hidden;
   justify-content: center;
 }
 .tableBox {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 td {
   text-align: center;
   width: 9vw;
-  padding: 1px;
+  padding: 5px;
   overflow: hidden;
   height: 10vh;
 }
