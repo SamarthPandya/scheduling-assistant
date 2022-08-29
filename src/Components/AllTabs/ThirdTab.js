@@ -13,6 +13,10 @@ const timeSlotMap = {
 };
 
 const ThirdTab = () => {
+  function handleAttend() {
+    // fill code for attendance updation in data base
+    console.log("attended");
+  }
   const days = window.timeTable;
   if (window.timeTable == null) {
     return <div>Holiday</div>;
@@ -20,7 +24,7 @@ const ThirdTab = () => {
   const weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const d = new Date();
   let day = weekdays[d.getDay()];
-  const slotsToday = days["MON"];
+  const slotsToday = days[day];
   console.log(slotsToday);
   function renderTodaysSlots() {
     const n = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -31,19 +35,18 @@ const ThirdTab = () => {
             if (slotsToday[timeSlotMap[item].name] != null) {
               return (
                 <div key={i} className="slotToday">
+                  <div className="slotTodayName">
+                    {slotsToday[timeSlotMap[item].name]}
+                  </div>
+                  <div className="slotTodayTime">{timeSlotMap[item].time}</div>
+                  <div className="tickBox"></div>
                   <button
+                    id="handleAttend"
                     type="button"
-                    className="slotToday"
                     defaultValue="false"
-                    onClick={console.log("attended")}
+                    onClick={handleAttend}
                   >
-                    <div className="slotTodayName">
-                      {slotsToday[timeSlotMap[item].name]}
-                    </div>
-                    <div className="slotTodayTime">
-                      {timeSlotMap[item].time}
-                    </div>
-                    <div className="tickBox"></div>
+                    &#10004;
                   </button>
                 </div>
               );

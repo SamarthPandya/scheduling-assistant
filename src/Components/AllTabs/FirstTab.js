@@ -164,7 +164,7 @@ const FirstTab = () => {
       <div className="input">
         <input
           id="Alias"
-          maxLength="25"
+          maxLength="15"
           autoComplete="off"
           type="text"
           placeholder="Slot Name"

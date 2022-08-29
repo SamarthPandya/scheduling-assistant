@@ -19,13 +19,13 @@ const Tabs = (e) => {
           setActiveTab={setActiveTab}
         />
         <TabNavItem
-          title="Dummy Tab"
+          title="Attendance"
           id="tab2"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
         <TabNavItem
-          title="Dummy Tab"
+          title="Today"
           id="tab3"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
