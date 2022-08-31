@@ -5,6 +5,7 @@
   --font-dark: rgb(21, 21, 21);
   --font-secondary: #76549a;
   --font-dark1: rgb(63, 60, 60);
+  --forSlot: #32a143;
 }
 .TabContent {
   display: flex;
@@ -18,13 +19,19 @@
 td {
   text-align: center;
   width: 9vw;
+  font-weight: bolder;
   padding: 5px;
+  color: var(--font-dark1);
   overflow: hidden;
   height: 10vh;
+}
+.lecture {
+  font-family: monospace;
 }
 th {
   text-align: center;
   height: 10vh;
+  font-weight: bolder;
   color: var(--font-dark1);
 }
 .input {
@@ -37,6 +44,8 @@ th {
   text-align: center;
 }
 tr {
+  font-weight: bolder;
+  color: var(--font-dark1);
   background-color: #94b49fb2;
 }
 button,
@@ -45,7 +54,6 @@ select {
   padding: 10px;
   border-radius: 2px;
   border: none;
-  color: var(--font-dark);
 }
 input,
 select {
@@ -53,25 +61,56 @@ select {
 }
 
 #setSlot {
-  background-color: rgb(39, 192, 39);
+  background-color: #1db954;
   color: white;
+  font-weight: bold;
 }
 
 #clearAll {
   background-color: red;
   color: white;
+  font-weight: bold;
 }
 #clearAll:hover {
   background-color: rgb(184, 63, 63);
+  scale: 1.1;
   color: white;
 }
 
 #setSlot:hover {
-  background-color: green;
+  scale: 1.1;
+  background-color: #149b43;
   color: white;
 }
 
 #dayOfWeek {
-  font-weight: bold;
   color: var(--font-dark1);
+}
+select,
+input {
+  background-color: var(--highlight);
+  font-weight: bold;
+  color: var(--bg-light);
+}
+option {
+  background-color: var(--highlight);
+  margin: 10px;
+  color: var(--bg-light);
+
+  border: black solid 1px;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--bg-light);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--bg-light);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--bg-light);
 }

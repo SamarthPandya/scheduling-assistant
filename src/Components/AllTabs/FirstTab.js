@@ -1,9 +1,6 @@
 import { tab } from "@testing-library/user-event/dist/tab";
 import React, { useState } from "react";
 import "./FirstTab.css";
-
-//window.timeTable = null;
-
 var slotMap = {
   0: "A",
   1: "B",
@@ -62,7 +59,6 @@ const FirstTab = () => {
         var x = response.json().then((data) => {
           var res = data;
           window.timeTable = res;
-
           console.log(res);
           for (const it in res) {
             const curr = res[it];
@@ -71,6 +67,8 @@ const FirstTab = () => {
               console.log(temp);
               if (temp) {
                 document.getElementById(temp).innerHTML = res[it][slott];
+                document.getElementById(temp).style.backgroundColor = "#1DB954";
+                document.getElementById(temp).style.color = "white";
               }
             }
           }
@@ -126,37 +124,50 @@ const FirstTab = () => {
     localStorage.setItem(slotMap[selectedSlotIndex], selectedSlotName);
   }
   const clearAll = () => {
-    window.timeTable = null;
-    var temp = document.getElementsByTagName("option");
-    // clear from database
-    fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
-      credentials: "include",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      method: "POST",
-      body: "id=" + sessionStorage.getItem("id"),
-    }).then(console.log("CLEARED FROM DATABASE"));
-
-    fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
-      credentials: "include",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      method: "POST",
-      body: "id=" + sessionStorage.getItem("id"),
-    }).then(console.log("CLEARED FROM DATABASE"));
-
-    for (var i = 0; i < 24; i++) {
-      if (temp[i] != undefined && temp[i].disabled) {
-        temp[i].removeAttribute("disabled");
-      }
-      localStorage.removeItem(slotMap[i]);
-      slots[slotMap[i]] = "";
+    if (window.timeTable == null || []) {
+      alert("Nothing to clear.");
+      return;
     }
-    var tableCells = document.getElementsByClassName("lecture");
-    for (var m = 0; m < 45; m++) {
-      tableCells[m].innerHTML = "";
+    if (
+      window.confirm(
+        "This will clear your entire schedule. Are you sure to proceed?"
+      ) == true
+    ) {
+      window.timeTable = null;
+      var temp = document.getElementsByTagName("option");
+      // clear from database
+      fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
+        credentials: "include",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+        method: "POST",
+        body: "id=" + sessionStorage.getItem("id"),
+      }).then(console.log("CLEARED FROM DATABASE"));
+
+      fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
+        credentials: "include",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+        method: "POST",
+        body: "id=" + sessionStorage.getItem("id"),
+      }).then(console.log("CLEARED FROM DATABASE"));
+
+      for (var i = 0; i < 24; i++) {
+        if (temp[i] != undefined && temp[i].disabled) {
+          temp[i].removeAttribute("disabled");
+        }
+        localStorage.removeItem(slotMap[i]);
+        slots[slotMap[i]] = "";
+      }
+      var tableCells = document.getElementsByClassName("lecture");
+      for (var m = 0; m < 45; m++) {
+        tableCells[m].innerHTML = "";
+        tableCells[m].style.backgroundColor = "#94b49fb2";
+      }
+    } else {
+      return;
     }
   };
   return (
@@ -278,15 +289,15 @@ const FirstTab = () => {
         <table>
           <tr>
             <th>Day Vs. Time</th>
-            <th>7:55-8:50</th>
-            <th>9:00-9:55</th>
-            <th>10:00-10:55</th>
-            <th>11:00-11:55</th>
-            <th>12:00-12:55</th>
-            <th>2:00-2:55</th>
-            <th>3:00-3:55</th>
-            <th>4:00-4:55</th>
-            <th>5:00-5:55</th>
+            <th>7:55 - 8:50</th>
+            <th>9:00 - 9:55</th>
+            <th>10:00 - 10:55</th>
+            <th>11:00 - 11:55</th>
+            <th>12:00 - 12:55</th>
+            <th>2:00 - 2:55</th>
+            <th>3:00 - 3:55</th>
+            <th>4:00 - 4:55</th>
+            <th>5:00 - 5:55</th>
           </tr>
           <tr>
             <td id="dayOfWeek">Monday</td>

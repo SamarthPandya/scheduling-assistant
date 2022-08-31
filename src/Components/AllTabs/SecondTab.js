@@ -10,19 +10,19 @@ const SecondTab = () => {
     xlabels: ["TOC", "FA", "NA", "GT"],
     ylabels: [15, 20, 13, 17],
   };
-  return (
-    <div className="SecondTab">
+  function renderBarChart(d) {
+    return (
       <div>
         <Bar
           data={{
             // Name of the variables on x-axies for each bar
-            labels: data.xlabels,
+            labels: d.xlabels,
             datasets: [
               {
                 // Label for bars
                 label: "Attendance",
                 // Data or value of your each variable
-                data: data.ylabels,
+                data: d.ylabels,
                 // Color of each bar
                 backgroundColor: ["blue", "green", "red", "yellow"],
                 // Border color of each bar
@@ -56,7 +56,8 @@ const SecondTab = () => {
           }}
         />
       </div>
-    </div>
-  );
+    );
+  }
+  return <div className="SecondTab">{renderBarChart(data)}</div>;
 };
 export default SecondTab;
