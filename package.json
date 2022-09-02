@@ -1,5 +1,6 @@
 {
   "name": "scheduling-assistant",
+  "homepage": "https://samarthpandya.github.io/MySchedule/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
