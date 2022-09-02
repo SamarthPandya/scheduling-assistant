@@ -61,7 +61,7 @@
 }
 #handleAttend:hover {
   background-color: rgb(26, 229, 26);
-  color: rgb(0, 0, 0);
+  color: white;
   scale: 1.1;
   box-shadow: 1px 1px rgb(137, 4, 4);
 }

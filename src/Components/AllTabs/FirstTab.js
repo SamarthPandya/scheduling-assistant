@@ -117,6 +117,52 @@ const FirstTab = () => {
         console.log("ADDED to DB");
         // this will display on table
         loadTT();
+        fetch(
+          "https://iitgtt2022.000webhostapp.com/getatd.php?id=" +
+            sessionStorage.getItem("id"),
+          {
+            credentials: "include",
+            headers: {
+              "Content-type":
+                "application/x-www-form-urlencoded; charset=UTF-8",
+            },
+            method: "GET",
+          }
+        )
+          .then(function (response) {
+            console.log("Aagaya data bhai Hurray!!");
+            response.json().then((res) => {
+              window.data = res;
+              // data = res;
+              // console.log(data);
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        fetch(
+          "https://iitgtt2022.000webhostapp.com/getrecord.php?id=" +
+            sessionStorage.getItem("id"),
+          {
+            credentials: "include",
+            headers: {
+              "Content-type":
+                "application/x-www-form-urlencoded; charset=UTF-8",
+            },
+            method: "GET",
+          }
+        )
+          .then(function (response) {
+            console.log("Aagaya attendance");
+            response.json().then((res) => {
+              window.attended = res;
+              // data = res;
+              // console.log(data);
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch(function (error) {
         console.log(error);
@@ -124,16 +170,16 @@ const FirstTab = () => {
     localStorage.setItem(slotMap[selectedSlotIndex], selectedSlotName);
   }
   const clearAll = () => {
-    if (window.timeTable == null || []) {
+    if (window.timeTable.length == 0) {
       alert("Nothing to clear.");
       return;
-    }
-    if (
+    } else if (
       window.confirm(
         "This will clear your entire schedule. Are you sure to proceed?"
       ) == true
     ) {
-      window.timeTable = null;
+      window.timeTable = [];
+      console.log(window.timeTable);
       var temp = document.getElementsByTagName("option");
       // clear from database
       fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
@@ -145,14 +191,14 @@ const FirstTab = () => {
         body: "id=" + sessionStorage.getItem("id"),
       }).then(console.log("CLEARED FROM DATABASE"));
 
-      fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
-        credentials: "include",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-        },
-        method: "POST",
-        body: "id=" + sessionStorage.getItem("id"),
-      }).then(console.log("CLEARED FROM DATABASE"));
+      // fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
+      //   credentials: "include",
+      //   headers: {
+      //     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      //   },
+      //   method: "POST",
+      //   body: "id=" + sessionStorage.getItem("id"),
+      // }).then(console.log("CLEARED FROM DATABASE"));
 
       for (var i = 0; i < 24; i++) {
         if (temp[i] != undefined && temp[i].disabled) {
