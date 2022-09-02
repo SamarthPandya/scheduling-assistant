@@ -190,7 +190,50 @@ const FirstTab = () => {
         method: "POST",
         body: "id=" + sessionStorage.getItem("id"),
       }).then(console.log("CLEARED FROM DATABASE"));
-
+      fetch(
+        "https://iitgtt2022.000webhostapp.com/getatd.php?id=" +
+          sessionStorage.getItem("id"),
+        {
+          credentials: "include",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+          },
+          method: "GET",
+        }
+      )
+        .then(function (response) {
+          console.log("Aagaya data bhai Hurray!!");
+          response.json().then((res) => {
+            window.data = res;
+            // data = res;
+            // console.log(data);
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      fetch(
+        "https://iitgtt2022.000webhostapp.com/getrecord.php?id=" +
+          sessionStorage.getItem("id"),
+        {
+          credentials: "include",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+          },
+          method: "GET",
+        }
+      )
+        .then(function (response) {
+          console.log("Aagaya attendance");
+          response.json().then((res) => {
+            window.attended = res;
+            // data = res;
+            // console.log(data);
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       // fetch("https://iitgtt2022.000webhostapp.com/clear.php", {
       //   credentials: "include",
       //   headers: {
