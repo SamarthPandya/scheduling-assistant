@@ -15,7 +15,12 @@ input:focus {
 }
 body {
   background-image: url("./loginBack.jpg");
-  background-size: 1300px;
+  height: 100vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #InnerFormBox {
   display: flex;
