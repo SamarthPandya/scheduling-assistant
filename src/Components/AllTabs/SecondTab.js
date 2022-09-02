@@ -4,28 +4,7 @@ import { Bar } from "react-chartjs-2";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 Chart.register(CategoryScale);
-fetch(
-  "https://iitgtt2022.000webhostapp.com/getatd.php?id=" +
-    sessionStorage.getItem("id"),
-  {
-    credentials: "include",
-    headers: {
-      "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    },
-    method: "GET",
-  }
-)
-  .then(function (response) {
-    console.log("Aagaya data bhai Hurray!!");
-    response.json().then((res) => {
-      window.data = res;
-      // data = res;
-      // console.log(data);
-    });
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+
 const SecondTab = () => {
   // modify this data object after fetching from the database
   // const data = {

@@ -11,28 +11,7 @@ const timeSlotMap = {
   8: { name: "SLOT8", time: "4:00 - 4:55" },
   9: { name: "SLOT9", time: "5:00 - 5:55" },
 };
-fetch(
-  "https://iitgtt2022.000webhostapp.com/getrecord.php?id=" +
-    sessionStorage.getItem("id"),
-  {
-    credentials: "include",
-    headers: {
-      "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    },
-    method: "GET",
-  }
-)
-  .then(function (response) {
-    console.log("Aagaya attendance");
-    response.json().then((res) => {
-      window.attended = res;
-      // data = res;
-      // console.log(data);
-    });
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+
 const ThirdTab = () => {
   function handleAttend(e) {
     // fill code for attendance updation in data base
