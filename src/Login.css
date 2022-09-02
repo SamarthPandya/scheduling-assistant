@@ -36,7 +36,6 @@ body {
 }
 
 .inputBox {
-  font-size: 15pt;
   color: var(--font-dark);
   background-color: var(--light-primary);
   opacity: 30%;
@@ -47,8 +46,6 @@ body {
 
   margin-top: 30px;
   color: rgb(255, 255, 255);
-
-  font-size: 15pt;
 }
 .logIn:hover {
   background-color: blue;
