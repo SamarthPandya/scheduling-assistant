@@ -16,10 +16,27 @@ function submission() {
     return;
   } else {
     // fill code for user creation in database;
-    console.log("registered Succesfully!");
-    document.location.hash = " ";
-    console.log(userID);
-    console.log(userPIN);
-    event.preventDefault();
+    fetch("https://iitgtt2022.000webhostapp.com/loginADD.php", {
+      credentials: "include",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      method: "POST",
+      body: "id=" + userID + "&pwd=" + userPIN,
+    })
+      .then(function (response) {
+        if(response.status==305) alert("USER ID EXISTS");
+        else if(response.status==306) alert("TRY AGAIN");
+        else{
+          if(window.confirm("Registered Successfully! ")==true){
+            // console.log("HOgaya");
+            window.location.href="../";
+          }
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      event.preventDefault();
   }
 }
