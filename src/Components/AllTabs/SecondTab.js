@@ -36,6 +36,7 @@ const SecondTab = () => {
     return (
       <div>
         <Bar
+          id="bar"
           data={{
             // Name of the variables on x-axies for each bar
             labels: d.xlabels,
