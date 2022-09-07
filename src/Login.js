@@ -2,6 +2,7 @@ import React from "react";
 import Tabs from "./Components/TabComponent/Tabs";
 import { useState } from "react";
 import "./Login.css";
+import { Route, Routes } from "react-router-dom";
 
 function Login() {
   const [errorMessages, setErrorMessages] = useState({});
@@ -135,9 +136,29 @@ function Login() {
 
   const renderForm = (
     <div className="formBox">
+      <div id="topRightBox">
+        {/* <a id="signUp" href="../register.html" target="_blank">
+          Sign up
+        </a> */}
+        <a
+          id="signUp"
+          target="_blank"
+          href={process.env.PUBLIC_URL + "/register.html"}
+        >
+          Sign up
+        </a>
+        <a
+          id="signUp"
+          target="_blank"
+          href={process.env.PUBLIC_URL + "/about.html"}
+        >
+          About
+        </a>
+      </div>
       <form id="InnerFormBox" onSubmit={handleSubmit}>
         {renderErrorMessage("uname")}
         {renderErrorMessage("pass")}
+
         <input
           className="inputBox"
           type="text"

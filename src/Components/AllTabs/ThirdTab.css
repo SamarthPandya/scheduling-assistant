@@ -65,3 +65,18 @@
   scale: 1.1;
   box-shadow: 1px 1px rgb(137, 4, 4);
 }
+#holiday {
+  margin-top: 10vh;
+  display: flex;
+  font-family: cursive;
+  padding: 15px;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 15pt;
+  background-color: rgb(165, 209, 170);
+  flex-direction: column;
+  color: rgb(58, 63, 63);
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}

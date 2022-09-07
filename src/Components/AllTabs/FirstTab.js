@@ -394,7 +394,9 @@ const FirstTab = () => {
             <th>5:00 - 5:55</th>
           </tr>
           <tr>
-            <td id="dayOfWeek">Monday</td>
+            <td id="dayOfWeek" className="MON">
+              Monday
+            </td>
             <td id="monslot1" className="lecture"></td>
             <td id="monslot2" className="lecture"></td>
             <td id="monslot3" className="lecture"></td>
@@ -406,7 +408,9 @@ const FirstTab = () => {
             <td id="monslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td id="dayOfWeek">Tuesday</td>
+            <td id="dayOfWeek" className="TUE">
+              Tuesday
+            </td>
             <td id="tueslot1" className="lecture"></td>
             <td id="tueslot2" className="lecture"></td>
             <td id="tueslot3" className="lecture"></td>
@@ -418,7 +422,9 @@ const FirstTab = () => {
             <td id="tueslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td id="dayOfWeek">Wednesday</td>
+            <td id="dayOfWeek" className="WED">
+              Wednesday
+            </td>
             <td id="wedslot1" className="lecture"></td>
             <td id="wedslot2" className="lecture"></td>
             <td id="wedslot3" className="lecture"></td>
@@ -430,7 +436,9 @@ const FirstTab = () => {
             <td id="wedslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td id="dayOfWeek">Thursday</td>
+            <td id="dayOfWeek" className="THU">
+              Thursday
+            </td>
             <td id="thuslot1" className="lecture"></td>
             <td id="thuslot2" className="lecture"></td>
             <td id="thuslot3" className="lecture"></td>
@@ -442,7 +450,9 @@ const FirstTab = () => {
             <td id="thuslot9" className="lecture"></td>
           </tr>
           <tr>
-            <td id="dayOfWeek">Friday</td>
+            <td id="dayOfWeek" className="FRI">
+              Friday
+            </td>
             <td id="frislot1" className="lecture"></td>
             <td id="frislot2" className="lecture"></td>
             <td id="frislot3" className="lecture"></td>
