@@ -14,13 +14,13 @@
   justify-content: center;
 }
 .tableBox {
-  margin-top: 10px;
+  margin-top: 2%;
 }
 td {
   text-align: center;
   width: 9vw;
   font-weight: bolder;
-  padding: 5px;
+  padding: 0.5%;
   color: var(--font-dark1);
   overflow: hidden;
   height: 10vh;
