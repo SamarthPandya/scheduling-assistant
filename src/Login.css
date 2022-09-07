@@ -52,7 +52,7 @@ a {
 }
 
 .inputBox {
-  color: var(--font-dark);
+  color: var(--light-secondary);
   background-color: var(--light-primary);
   opacity: 30%;
 }
@@ -67,10 +67,25 @@ a {
   background-color: blue;
   transform: scale(1.1);
 }
-#signUp:hover{
+#signUp:hover {
   color: rgba(210, 179, 179, 0.929);
 }
 
 .error {
   color: white;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(49, 47, 47);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(49, 47, 47);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(49, 47, 47);
 }
