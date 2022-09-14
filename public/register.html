@@ -5,34 +5,38 @@
       rel="icon"
       href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI53zqIO_NJMcoV00byBkSF0wYL0VBmgOXWg&usqp=CAU"
     />
+    <link rel="stylesheet" href="register.css">
     <title>Sign Up</title>
   </head>
   <body>
-    <form>
-      <input
-        type="text"
-        name="Username"
-        id="uname"
-        placeholder="Username"
-        required="true"
-      />
-      <input
-        type="text"
-        name="Password"
-        id="pass"
-        placeholder="Password"
-        required="true"
-      />
-      <input
-        type="text"
-        name="CNFPassword"
-        id="cnfpass"
-        placeholder="Confirm Password"
-      />
-      <button type="submit" onclick="submission()" default="false">
-        Sign Up
-      </button>
-    </form>
+    <div class="login-wrapper">
+      <form  class="form">
+        <img src="/public/Avatar.jpg" alt="">
+        
+        <h2>login</h2>
+        
+        <div class="input-grp">
+          <input type="text" name="Username" id="uname"  required="true">
+          <label for="Username">Username</label>
+        </div>
+        
+        <div class="input-grp">
+          <input type="text" name="Password" id="pass" required="true">
+          <label for="Password">Password</label>
+        </div>
+        
+        <div class="input-grp">
+          <input type="text" name="CNFPassword" id="cnfpass">
+          <label for="CNFPassword">Confirm Password</label>
+        </div>
+        
+        <button type="submit" onclick="submission()" default="false" class="submit-btn">
+          Sign Up
+        </button>
+      
+      </form>
+    </div>
+    
     <script src="register.js"></script>
   </body>
 </html>
