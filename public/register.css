@@ -84,7 +84,8 @@ body{
     pointer-events: none;
     transition: .3s ease-out;
 }
-.form .input-grp input:focus + label {
+.form .input-grp input:focus + label,
+.form .input-grp input:valid + label {
     transform: translateY(-18px);
     color: #ff652f;
     font-size: .8rem;
